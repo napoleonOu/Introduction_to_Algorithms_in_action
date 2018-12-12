@@ -7,22 +7,20 @@ using std::endl;
 int main()
 {
 
-    hashtable<int,int,hash<int>,identity<int>,equal_to<int>>
-            iht(50,hash<int>(),equal_to<int>());
+    hashtable<int, int, hash<int>, identity<int>, equal_to<int>>
+        iht(50, hash<int>(), equal_to<int>());
+    cout << "bucket count =" << iht.bucket_count() << endl;
+    iht.insert_unique(59);
+    iht.insert_unique(63);
+    iht.insert_unique(108);
+    iht.insert_equal(108);
+    hashtable<int, int, hash<int>, identity<int>, equal_to<int>>::iterator iter = iht.begin();
+    //cout << *iter;
 
-
-#if 0
-    HashTable<int,int> ht(50);
-    for(int i=0;i!=50;i++){
-        std::string tmp="aaa";
-        auto p1=std::make_pair(i,i+1000);
-        ht.Insert(p1);
+    for (int i = 0; i<iht.size();i++,++iter)
+    {
+        cout << " " << *iter;
     }
-    std::cout<<(ht.Find(8))->_kv.second;
-    ;
-#endif
-
-
-    //cout<<"bucket count = "<<iht.bucket_count()<<endl;
+    //system("pause");
     return 0;
 }
